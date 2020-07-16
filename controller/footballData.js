@@ -17,12 +17,28 @@ module.exports = {
 			const { teams } = response.data;
 			res.status(200).json(teams);
 		} catch (error) {
-			console.error(error.message);
+			res.json(error.response.data);
 		}
 	},
 
-	getTeamById: (req, res) => {
+	getTeamById: async (req, res) => {
+		const id = req.params.id;
+		console.log(id);
 		try {
-		} catch (error) {}
+			const config = {
+				headers: {
+					'X-Auth-Token': `${process.env.API_SECRET_KEY}`,
+					'Content-Type': 'application/json',
+				},
+			};
+			const response = await axios.get(
+				`https://api.football-data.org/v2/teams/${id}`,
+				config
+			);
+
+			res.status(200).json(response.data);
+		} catch (error) {
+			res.json(error.response.data);
+		}
 	},
 };
