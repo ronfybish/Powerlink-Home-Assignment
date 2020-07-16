@@ -24,8 +24,9 @@ const Teams = () => {
 		<div>
 			<Link to='/'>back to home page !</Link>
 			<h1>Teams Page</h1>
-			{teams.length > 0 ? (
-				teams.map(team => <div key={team.name}>{team.name}</div>)
+			{console.log(teams.length)}
+			{teams.length > 0 && teams ? (
+				teams.map(team => console.log(teams.length))
 			) : (
 				<Spinner />
 			)}

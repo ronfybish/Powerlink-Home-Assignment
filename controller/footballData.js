@@ -7,11 +7,10 @@ module.exports = {
 			const config = {
 				headers: {
 					'X-Auth-Token': `${process.env.API_SECRET_KEY}`,
-					'Content-Type': 'application/json',
 				},
 			};
 			const response = await axios.get(
-				'https://api.football-data.org/v2/teams',
+				'http://api.football-data.org/v2/teams',
 				config
 			);
 			const { teams } = response.data;
@@ -28,7 +27,6 @@ module.exports = {
 			const config = {
 				headers: {
 					'X-Auth-Token': `${process.env.API_SECRET_KEY}`,
-					'Content-Type': 'application/json',
 				},
 			};
 			const response = await axios.get(
