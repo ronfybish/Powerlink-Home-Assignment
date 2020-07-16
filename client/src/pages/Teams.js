@@ -8,8 +8,8 @@ const Teams = () => {
         getTeams();
 	}, []);
     
-    const [teams, setsTeams] = useState(null);
-    
+    const [teams, setsTeams] = useState([]);
+
 	const getTeams = async () => {
 		try {
 			const res = await axios.get('/api/teams');
@@ -23,10 +23,10 @@ const Teams = () => {
 		<div>
 			<Link to='/'>back to home page !</Link>
 			<h1>Teams Page</h1>
-			{teams !== null ? (
-				teams.map(team => <div>{team.name}</div>)
-			) : (
-				<Spinner />
+			{!teams.length ? (
+                <Spinner />
+                ) : (
+                    teams.map(team => <div key={team.name}>{team.name}</div>)
 			)}
 		</div>
 	);
