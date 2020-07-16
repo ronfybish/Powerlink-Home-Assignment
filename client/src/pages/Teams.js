@@ -4,11 +4,12 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 
 const Teams = () => {
-	const [teams, setsTeams] = useState(null);
-	useEffect(() => {
-		getTeams();
-	}, [teams]);
-
+    useEffect(() => {
+        getTeams();
+	}, []);
+    
+    const [teams, setsTeams] = useState(null);
+    
 	const getTeams = async () => {
 		try {
 			const res = await axios.get('/api/teams');
