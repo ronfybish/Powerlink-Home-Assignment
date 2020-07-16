@@ -4,15 +4,16 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 
 const Teams = () => {
-    useEffect(() => {
-        getTeams();
+	useEffect(() => {
+		getTeams();
 	}, []);
-    
-    const [teams, setsTeams] = useState([]);
+
+	const [teams, setsTeams] = useState([]);
 
 	const getTeams = async () => {
 		try {
 			const res = await axios.get('/api/teams');
+			console.log(res.data);
 			setsTeams(res.data);
 		} catch (error) {
 			console.log(error);
@@ -23,10 +24,10 @@ const Teams = () => {
 		<div>
 			<Link to='/'>back to home page !</Link>
 			<h1>Teams Page</h1>
-			{!teams.length ? (
-                <Spinner />
-                ) : (
-                    teams.map(team => <div key={team.name}>{team.name}</div>)
+			{teams.length > 0 ? (
+				teams.map(team => <div key={team.name}>{team.name}</div>)
+			) : (
+				<Spinner />
 			)}
 		</div>
 	);
