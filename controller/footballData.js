@@ -6,11 +6,11 @@ module.exports = {
 		try {
 			const config = {
 				headers: {
-					'X-Auth-Token': `${process.env.API_SECRET_KEY}`,
+					'X-Auth-Token': '5098566abd574171a3f08ea411ea38a6',
 				},
 			};
 			const response = await axios.get(
-				'http://api.football-data.org/v2/teams',
+				'https://api.football-data.org/v2/teams',
 				config
 			);
 			const { teams } = response.data;
@@ -26,7 +26,7 @@ module.exports = {
 		try {
 			const config = {
 				headers: {
-					'X-Auth-Token': `${process.env.API_SECRET_KEY}`,
+					'X-Auth-Token': '5098566abd574171a3f08ea411ea38a6',
 				},
 			};
 			const response = await axios.get(
