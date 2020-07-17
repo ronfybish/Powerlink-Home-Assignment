@@ -13,7 +13,8 @@ const Teams = () => {
 	const getTeams = async () => {
 		try {
 			const res = await axios.get('/api/teams');
-			console.log(res.data);
+            console.log(res.data);
+            console.log("test frmo api",res.data.length)
 			setsTeams(res.data);
 		} catch (error) {
 			console.log(error);
@@ -24,12 +25,9 @@ const Teams = () => {
 		<div>
 			<Link to='/'>back to home page !</Link>
 			<h1>Teams Page</h1>
-			{console.log(teams.length)}
-			{teams.length > 0 && teams ? (
-				teams.map(team => console.log(teams.length))
-			) : (
-				<Spinner />
-			)}
+            {
+                teams && teams.length ? teams.map((team =><div key={team.name}>{team.name}</div>)):<Spinner/> 
+            }
 		</div>
 	);
 };
