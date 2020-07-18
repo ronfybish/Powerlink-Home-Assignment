@@ -22,7 +22,6 @@ module.exports = {
 
 	getTeamById: async (req, res) => {
 		const id = req.params.id;
-		console.log(id);
 		try {
 			const config = {
 				headers: {
