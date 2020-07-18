@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { useTeamStyles } from '../pages/style';
 import {
 	TableContainer,
 	TableHead,
@@ -10,27 +9,16 @@ import {
 	Paper,
 } from '@material-ui/core/';
 const PlayersTable = ({ squad }) => {
-	const classes = useTeamStyles();
 	return (
 		<Fragment>
-			<Paper elevation={24}>
+			<Paper elevation={24} style={{ margin: '1rem', padding: '1rem' }}>
 				<TableContainer>
-					<Table className={classes.table}>
+					<Table>
 						<TableHead>
-							<TableRow className={classes.rowHead}>
-								<TableCell className={classes.cellHead}>
-									player Name
-								</TableCell>
-								<TableCell
-									className={classes.cellHead}
-									align='center'
-								>
-									Position
-								</TableCell>
-								<TableCell
-									className={classes.cellHead}
-									align='center'
-								>
+							<TableRow>
+								<TableCell>player Name</TableCell>
+								<TableCell align='center'>Position</TableCell>
+								<TableCell align='center'>
 									Shirt Number
 								</TableCell>
 							</TableRow>

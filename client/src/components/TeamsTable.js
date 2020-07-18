@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import {useHistory} from 'react-router-dom'
-import { useTeamsStyles } from '../pages/style';
+import { useHistory } from 'react-router-dom';
+import { useTeamsStyles } from './style';
 import {
 	TableContainer,
 	TableHead,
@@ -12,40 +12,27 @@ import {
 	Paper,
 } from '@material-ui/core/';
 
-
-const TeamsTable = ({teams}) => {
-    const classes = useTeamsStyles();
-    let history = useHistory();
-    const handleClick = (id, teamData) => {
-        const { name, address, crestUrl, venue, website } = teamData;
-        history.push({
-            pathname: `/teams/${id}`,
-            state: { name, address, crestUrl, venue, website },
-        });
-    };
+const TeamsTable = ({ teams }) => {
+	const classes = useTeamsStyles();
+	let history = useHistory();
+	const handleClick = (id, teamData) => {
+		const { name, address, crestUrl, venue, website } = teamData;
+		history.push({
+			pathname: `/teams/${id}`,
+			state: { name, address, crestUrl, venue, website },
+		});
+	};
 	return (
 		<Fragment>
-			<Paper elevation={24}>
+			<Paper elevation={24}style={{ margin: '1rem', padding: '1rem' }}>
 				<TableContainer>
 					<Table className={classes.table}>
 						<TableHead>
-							<TableRow className={classes.rowHead}>
+							<TableRow>
 								<TableCell></TableCell>
-								<TableCell className={classes.cellHead}>
-									Team Name
-								</TableCell>
-								<TableCell
-									className={classes.cellHead}
-									align='center'
-								>
-									Founded
-								</TableCell>
-								<TableCell
-									className={classes.cellHead}
-									align='left'
-								>
-									Address
-								</TableCell>
+								<TableCell>Team Name</TableCell>
+								<TableCell align='center'>Founded</TableCell>
+								<TableCell align='left'>Address</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
