@@ -1,4 +1,4 @@
-import React, { useEffect, useState,Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Header from '../components/Header';
 import TeamsTable from '../components/TeamsTable';
 import Spinner from '../components/Spinner';

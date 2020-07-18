@@ -12,8 +12,7 @@ export const useHeaderStyles = makeStyles(theme => ({
 		position: 'relative',
 		backgroundColor: theme.palette.grey[800],
 		color: theme.palette.common.white,
-		
-		height:'35vh',
+		height: '35vh',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
 	},
@@ -38,7 +37,7 @@ export const useLadingStyles = makeStyles(theme => ({
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
-		height:'100vh'
+		height: '100vh',
 	},
 	overlay: {
 		position: 'absolute',
@@ -50,8 +49,9 @@ export const useLadingStyles = makeStyles(theme => ({
 	},
 	headerContent: {
 		position: 'relative',
+		paddingLeft: '4rem',
 	},
-	test:{
-		height:'100vh'
-	}
+	test: {
+		height: '100vh',
+	},
 }));

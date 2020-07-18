@@ -8,6 +8,7 @@ import {
 	TableCell,
 	Paper,
 } from '@material-ui/core/';
+
 const PlayersTable = ({ squad }) => {
 	return (
 		<Fragment>

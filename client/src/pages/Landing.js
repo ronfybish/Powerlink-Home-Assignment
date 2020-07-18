@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Paper, Typography, Button } from '@material-ui/core/';
 import { useLadingStyles } from '../components/style';
+
 const Landing = () => {
 	const classes = useLadingStyles();
 	return (
@@ -20,14 +21,17 @@ const Landing = () => {
 						}
 					/>
 				}
-
 				<div className={classes.overlay} />
-
-				<Grid container alignItems='center' direction='column' style={{padding:'10rem'}}>
+				<Grid
+					container
+					alignItems='center'
+					direction='column'
+					style={{ padding: '5rem' }}
+				>
 					<Grid item>
 						<Typography
 							component='h1'
-							variant='h1'
+							variant='h3'
 							color='inherit'
 							className={classes.headerContent}
 						>
@@ -36,7 +40,11 @@ const Landing = () => {
 					</Grid>
 					<Grid item>
 						<Link to='/teams'>
-							<Button size='large' variant='contained' color='primary'>
+							<Button
+								size='large'
+								variant='contained'
+								color='primary'
+							>
 								Get Started
 							</Button>
 						</Link>

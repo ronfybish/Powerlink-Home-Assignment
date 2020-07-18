@@ -15,6 +15,7 @@ import {
 const TeamsTable = ({ teams }) => {
 	const classes = useTeamsStyles();
 	let history = useHistory();
+
 	const handleClick = (id, teamData) => {
 		const { name, address, crestUrl, venue, website } = teamData;
 		history.push({
@@ -22,9 +23,10 @@ const TeamsTable = ({ teams }) => {
 			state: { name, address, crestUrl, venue, website },
 		});
 	};
+
 	return (
 		<Fragment>
-			<Paper elevation={24}style={{ margin: '1rem', padding: '1rem' }}>
+			<Paper elevation={24} style={{ margin: '1rem', padding: '1rem' }}>
 				<TableContainer>
 					<Table className={classes.table}>
 						<TableHead>

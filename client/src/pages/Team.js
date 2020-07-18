@@ -23,11 +23,11 @@ const Team = ({ history, match }) => {
 			console.log(error);
 		}
 	};
-
+	const cards = { address, venue, website };
 	return (
 		<div>
 			<Header name={name} image={crestUrl} to={'/teams'} />
-			<Cards cards={(address, venue, website)} />
+			<Cards cards={cards} />
 			{squad && squad.length ? (
 				<PlayersTable squad={squad} />
 			) : (
