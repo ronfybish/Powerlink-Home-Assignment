@@ -31,7 +31,7 @@ const Landing = () => {
 							color='inherit'
 							className={classes.headerContent}
 						>
-							It's Time To Play
+							It's Time To Play!
 						</Typography>
 					</Grid>
 					<Grid item>
