@@ -1,41 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Avatar from '@material-ui/core/Avatar';
+import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import SportsSoccerSharpIcon from '@material-ui/icons/SportsSoccerSharp';
-import SendSharpIcon from '@material-ui/icons/SendSharp';
+import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
 	table: {
-		minWidth: 650,
+		minWidth: 360,
+		color: theme.palette.common.black,
 	},
-	tabler: { backgroundColor: 'lightblue' },
+	rowHead: {
+		backgroundColor: theme.palette.common.black,
+	},
+	cellHead: {
+		color: theme.palette.common.white,
+	},
+	avatar: {
+		width: theme.spacing(3),
+		height: theme.spacing(3),
+	},
 }));
-
-const Teams = ({ history }) => {
+const Teams = () => {
 	const classes = useStyles();
 	useEffect(() => {
 		getTeams();
 	}, []);
 
+	let history = useHistory();
 	const [teams, setsTeams] = useState([]);
 
 	const getTeams = async () => {
 		try {
 			const res = await axios.get('/api/teams');
+			console.log(res.data);
 			setsTeams(res.data);
 		} catch (error) {
 			console.log(error);
 		}
+	};
+
+	const handleClick = id => {
+		history.push(`/teams/${id}`);
 	};
 
 	return (
@@ -43,40 +57,58 @@ const Teams = ({ history }) => {
 			<Link to='/'>back to home page !</Link>
 			<h1>Teams Page</h1>
 			{teams && teams.length ? (
-				<TableContainer component={Paper}>
-					<Table className={classes.table} aria-label='simple table'>
-						<TableHead className={classes.tabler}>
-							<TableRow>
-								<TableCell>Team Name</TableCell>
-								<TableCell align='right'>Founded</TableCell>
-								<TableCell align='right'>Address</TableCell>
-								<TableCell align='right'>Visit Page</TableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{teams.map(team => (
-								<TableRow key={team.id}>
-									<TableCell component='th' scope='row'>
-										{team.name}
+				<Paper elevation={24}>
+					<TableContainer component={Paper}>
+						<Table className={classes.table}>
+							<TableHead>
+								<TableRow className={classes.rowHead}>
+									<TableCell></TableCell>
+									<TableCell className={classes.cellHead}>
+										Team Name
 									</TableCell>
-									<TableCell align='right'>
-										{team.founded}
+									<TableCell
+										className={classes.cellHead}
+										align='center'
+									>
+										Founded
 									</TableCell>
-									<TableCell align='right'>
-										{team.address}
-									</TableCell>
-									<TableCell >
-										<Link to={`/teams/${team.id}`} style={{textDecoration:'none'}}>
-											<IconButton  color="primary">
-												<SendSharpIcon />
-											</IconButton>
-										</Link>
+									<TableCell
+										className={classes.cellHead}
+										align='center'
+									>
+										Address
 									</TableCell>
 								</TableRow>
-							))}
-						</TableBody>
-					</Table>
-				</TableContainer>
+							</TableHead>
+							<TableBody>
+								{teams.filter(obj=>obj.crestUrl!==null).map(team => (
+									<TableRow
+										hover={true}
+										onClick={() => handleClick(team.id)}
+										key={team.id}
+									>
+										<TableCell>
+											<Avatar
+												className={classes.avatar}
+												alt={`${team.id}`}
+												src={`${team.crestUrl}`}
+											/>
+										</TableCell>
+										<TableCell align='left'>
+											{team.name}
+										</TableCell>
+										<TableCell align='center'>
+											{team.founded}
+										</TableCell>
+										<TableCell align='center'>
+											{team.address}
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+				</Paper>
 			) : (
 				<Spinner />
 			)}
