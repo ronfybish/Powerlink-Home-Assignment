@@ -23,11 +23,10 @@ const Cards = ({ address, venue, website }) => {
 								image='https://images-na.ssl-images-amazon.com/images/I/61a3rUDbU7L._AC_SX425_.jpg'
 								height='140px'
 								width='140px'
-								title={venue}
 							/>
 							<CardContent>
 								<Typography component='h6' variant='h6'>
-									Staduim: {venue}
+									Staduim: {venue} dsd
 								</Typography>
 							</CardContent>
 						</CardActionArea>

@@ -12,8 +12,8 @@ export const useHeaderStyles = makeStyles(theme => ({
 		position: 'relative',
 		backgroundColor: theme.palette.grey[800],
 		color: theme.palette.common.white,
-		paddingTop: '4rem',
-		paddingBottom: '4rem',
+		
+		height:'35vh',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
 	},
