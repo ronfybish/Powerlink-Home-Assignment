@@ -6,7 +6,7 @@ module.exports = {
 		try {
 			const config = {
 				headers: {
-					'X-Auth-Token': '5098566abd574171a3f08ea411ea38a6',
+					'X-Auth-Token': process.env.API_SECRET_KEY,
 				},
 			};
 			const response = await axios.get(
@@ -25,7 +25,7 @@ module.exports = {
 		try {
 			const config = {
 				headers: {
-					'X-Auth-Token': '5098566abd574171a3f08ea411ea38a6',
+					'X-Auth-Token': process.env.API_SECRET_KEY,
 				},
 			};
 			const response = await axios.get(
